@@ -19,7 +19,7 @@ class RadarrAPI(object):
         return f"<radarr-{self.server.id}>"
 
     def get_missing(self):
-        endpoint = '/api/movie'
+        endpoint = '/api/v3/movie'
         now = datetime.now(timezone.utc).astimezone().isoformat()
         influx_payload = []
         missing = []
@@ -69,7 +69,7 @@ class RadarrAPI(object):
         self.dbmanager.write_points(influx_payload)
 
     def get_queue(self):
-        endpoint = '/api/queue'
+        endpoint = '/api/v3/queue'
         now = datetime.now(timezone.utc).astimezone().isoformat()
         influx_payload = []
         queue = []
